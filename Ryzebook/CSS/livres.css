@@ -1,0 +1,79 @@
+/*Global */ 
+.heading-size {
+    text-align: center;
+    font-family: 'Martel Sans' , sans-serif;
+  
+}
+
+
+
+/* header */
+
+.header {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    height: 70px;
+    line-height: 70px;
+    background-color: rgba(0 , 0 , 0 , 0);
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+.header .header-logo {
+    color: #fff;
+    font-family:'Martel Sans', sans-serif;
+    float: left;
+    margin-left: 30px;
+    font-size: 30px;
+}
+.header .header-menu {
+    float: right;
+    margin-right: 30px;
+  
+}
+.header .header-menu a {
+    margin-right: 15px;
+    color: #fff;
+
+}
+.header .header-menu a:hover {
+    color: #3498db;
+    transition: 0.5s ease-in;
+}
+/* Banner */
+.banner{
+    margin-top: -20px;
+}
+.banner .banner-image {
+    position: relative;
+}
+.banner .banner-content {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+}
+.banner .banner-content h1{
+    margin-bottom: 40px;
+    font-size: 70px;
+    color:#27ae60;
+}
+
+.banner .banner-content h2 {
+    color:#2980b9;
+}
+/* la modification des places pour les téléphones */
+@media screen and (max-width: 600px) {
+    .header .header-logo  {
+        float: left;
+    }
+    .header .header-menu {
+        align-items: center;
+        text-align: center;
+    }
+    .banner .banner-content h1 {
+        display: none;
+    }
+    .banner .banner-content h2 {
+        display: none;

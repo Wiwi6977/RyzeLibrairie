@@ -1,0 +1,58 @@
+*{
+    margin: 0;  /* On enlève le margin et le padding du body */
+    padding: 0;
+}
+body {
+/* On augement la taille d'écrite de tout le body */
+font-size: 17px;
+line-height: 1.6;
+
+}
+/* On fait la partie responsive de l'intro en alignant le titre , le texte et le boutton , on mets l'image en fond et on la fixe pour qu'elle soit responsive ainsi que tout le texte */
+#showcase {
+font-family: 'Lobster', cursive;
+background-image: url("https://s1.1zoom.me/big3/793/Library_Book_532388_1920x1080.jpg");
+height: 100vh;
+background-position: center;
+background-size: cover;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 0 20px;
+
+} /* On modifie le titre , on lui donne une couleur , on add une taille supérieur et une bordure d'écriture */
+#showcase h1 {
+    font-size: 90px;
+    color: rgba(255, 196, 0, 0.452);
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: #fff;
+
+} /* On fait la même chose pour le petit paragraphe sauf qu'on lui rajoute une texture gras avec blod ! */
+#showcase  p {
+    font-size: 70px;
+  font: bold;
+  color: rgba(255, 196, 0, 0.452);
+  -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: #fff;
+
+}
+/* La partie boutton */
+#showcase .boutton {
+    font-size: 30px;
+    font: bold;
+    text-decoration: none;
+    color: #050505;
+    border: chocolate 5px solid;
+    padding: 10px 20px;;
+    border-radius: 20px;
+    margin-top: 20px;
+    
+}
+#showcase .boutton:hover{
+    border: black 5px solid ;
+    background:chocolate;s
+    color: #fff;
+    transition: 0.7s;
+} /* /////////////////////// */ 
