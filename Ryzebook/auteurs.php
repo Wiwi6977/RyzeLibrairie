@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <!-- Langue -->
-<html lang="en">
+<html lang="fr">
     <!-- /langue -->
     <!-- Début du head -->
         <head>
@@ -8,49 +8,47 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      
          <!-- CSS + Police d'écriture , j'utilise ici le framework Bulma pour le site responsif -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="CSS\livres.css">
+     <link rel="stylesheet" href="CSS\Auteurs.css">
         <!-- /CSS + Police d'écriture , j'utilise ici le framework Bulma pour le site responsif -->
+
         <!-- On va utiliser Font Awesome  pour désigner encore + notre site -->
         <script src="https://kit.fontawesome.com/e8457aecc5.js" crossorigin="anonymous"></script>
         <!-- On va utiliser Font Awesome  pour désigner encore + notre site -->
         <!-- Le titre de l'onglet. -->
-         <title>Livres</title>
+         <title>Auteurs</title>
         <!-- /Le titre de l'onglet. -->
         <!-- Le logo du site -->
         <link rel="shortcut icon" href="img/logo.jpg">
-        <!-- Le logo du site -->
+        <!-- /Le logo du site -->
         </head>
         <!-- Fin du head -->
-<body>
+    <body>
+        <!-- Menu + Banniere -->
+      <?php  include("menu.php"); ?>
+      <!-- Inclure les bases MySQL -->
+      <?php  include("database2.php"); ?>
+     <?php  include("database.php"); ?>
 
-   <?php 
-   /* Inclut les deux pages suivante pour la page */
-    include("menu.php");
-    include("database.php");
-  ?>
-  
-    <div class="livres">
-    <h2 class="title is-1"> Listes des Livres </h2>
+
+
+      <div class="livres">
+    <h2 class="title is-1"> Listes des Auteurs </h2>
+    <!-- Affichage des auteurs -->
     </div>
         <?php
-        // Affichage de la liste des livres ! 
             while ($ligne = $reponse->fetch()) {
               
               ?>
-              
-               <div class="block2">
+
+      <div class="block2">
                  <div class="border-bot">
                <div class="text">
-               <?php echo '<br><li>'.'Titre : '.$ligne['titre'] ; ?> <br>
-               <?php echo 'Nom :'.$ligne['nom'].'<br>'.'Prénom :'.$ligne['prenom'] ; ?> <br>
-               <a href="#">Voir détails ! </a>
-                    <div class="img">
-                          <img src="img/<?php echo $ligne['isbn']; ?>.jpg" alt="img" style="width : 200px; margin-left : 20px; "> 
-                          </div>
+               <?php echo '<br><li>'.'Nom : '.$ligne['nom'] ; ?> <a href="#">Voir ses livres !</a><br>
+               <?php echo '<br><li>'.'Prénom : '.$ligne['prenom'] ; ?> <br>
+                 
                </div>
             </div>
             </div>
@@ -61,5 +59,7 @@
                   $reponse->closeCursor();
         ?>
 
-</body>
+
+
+    </body>
 </html>

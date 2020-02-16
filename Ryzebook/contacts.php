@@ -3,6 +3,7 @@
     <div class="block">
        <footer class="footer">
            <form action="Acceuil.php" method="post"enctype="multipart/form-data">
+           <h2 class="heading-size">Contactez-moi ! </h2>
        <div class="field">
   <label class="label">Name</label>
   <div class="control">

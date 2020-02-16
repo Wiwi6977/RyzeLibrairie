@@ -1,18 +1,19 @@
   <!-- Header de la page -->
-        
   <div class="block">
                 <header class="header">
                     <a href="#" class="header-logo">RyzeLibrarie</a>
                         <nav class="header-menu">
-                            <a href="intro.php">L'intro</a>
+                            <a href="index.php">L'intro</a>
                             <a href="Acceuil.php">Accueil</a>
                             <a href="livres.php">Livres</a>
-                            <a href="Formulaires.php">Formulaires des livres</a>
+                            <a href="auteurs.php">Auteurs</a>
+                            <a href="Formulaires.php">Ajout !</a>
 
                         </nav>
                 </header>
         
             </div>
+            
             <!-- La bannière -->
             <div class="block">
                 <div class="banner">

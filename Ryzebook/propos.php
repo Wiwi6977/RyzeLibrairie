@@ -16,7 +16,7 @@
                                         </p>
                                         </div>
                                         <div class="column about-single-element">
-                                        <i class="fas fa-pen icon"></i>
+                                        <i class="fas fa-pen icon "></i>
                                         <p>
                                             Le site est simple , j'ai mis une base de donnée dans ce site ou est contenu tous les livres que j'ai lu , A toi de découvrir Le site à travers le menu de navigation qui se trouve là haut. Voilà tu sais tout , inutile de t'en dire plus vu que j'ai terminé.
                                         </p>

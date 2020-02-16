@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <!-- Langue -->
-<html lang="en">
+<html lang="fr">
     <!-- /langue -->
     <!-- Début du head -->
         <head>
