@@ -4,6 +4,11 @@
     font-family: 'Martel Sans' , sans-serif;
   
 }
+body {
+    margin: 0;
+    padding: 0;
+    background: #DCDCDC;
+}
 
 
 
@@ -16,7 +21,7 @@
     height: 70px;
     line-height: 70px;
     background-color: rgba(0 , 0 , 0 , 0);
-    position: fixed;
+    position: absolute;
     top: 0;
     z-index: 999;
 }
@@ -63,6 +68,38 @@
 .banner .banner-content h2 {
     color:#2980b9;
 }
+
+.livres .title {
+    text-align: center;
+    font-family: Audiowide;
+}
+.block2 {
+    width: 100%;
+    align-content: center;
+  
+}
+.block2 .border-bot{
+    width: 100%;
+  
+}
+/* Liste livre */
+
+.block2 .img {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px;
+    border-bottom: black 1px solid;
+}
+.block2 .text {
+   text-align: center;
+    
+}
+
+
+
 /* la modification des places pour les téléphones */
 @media screen and (max-width: 600px) {
     .header .header-logo  {
@@ -77,3 +114,5 @@
     }
     .banner .banner-content h2 {
         display: none;
+    }
+}

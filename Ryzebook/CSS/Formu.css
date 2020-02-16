@@ -16,7 +16,7 @@
     height: 70px;
     line-height: 70px;
     background-color: rgba(0 , 0 , 0 , 0);
-    position: fixed;
+    position: absolute;
     top: 0;
     z-index: 999;
 }
@@ -77,3 +77,5 @@
     }
     .banner .banner-content h2 {
         display: none;
+    }
+}
