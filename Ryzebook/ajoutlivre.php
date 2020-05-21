@@ -1,6 +1,11 @@
+
+
+
+
 <?php
+
 // Connexion à MySQL
-$bdd=new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8', 'root', '');
+include('database.php');
 
 if(isset($_POST['isbn']) AND isset($_POST['titre']) AND isset($_POST['editeur']) AND isset($_POST['genre'])AND isset($_POST['annee'])AND isset($_POST['langue'])AND isset($_POST['nbpages']) AND isset($_POST['nom']) AND isset($_POST['prenom'])){ 
    $titre=$_POST['titre'];
