@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <!-- Déclariation du charset , la feuille de style , la partie compatible avec le téléphone , Ipad -->

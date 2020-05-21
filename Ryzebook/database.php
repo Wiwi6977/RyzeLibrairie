@@ -8,15 +8,6 @@ catch (Exception $e)
 {
         die('Erreur : ' . $e->getMessage());
 }
-// reqèute SQL pour la liste des livres !
-$reponse = $bdd->query('SELECT isbn ,nom, titre ,prenom , libelle , nbpages , isbn , annee FROM Livre
-                        JOIN personne ON livre.editeur = personne.id
-                        JOIN  genre ON livre.genre = genre.id 
-                        ORDER BY annee DESC;');
 
-{
-	
-}
-
-
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>

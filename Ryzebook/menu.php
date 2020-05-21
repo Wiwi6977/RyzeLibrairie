@@ -1,15 +1,35 @@
-  <!-- Header de la page -->
+
+ 
+ <!-- Header de la page -->
+ 
+
+
+
+
   <div class="block">
                 <header class="header">
                     <a href="#" class="header-logo">RyzeLibrarie</a>
                         <nav class="header-menu">
-                            <a href="index.php">L'intro</a>
+               
+                             <a href="index.php">L'intro</a> 
                             <a href="Acceuil.php">Accueil</a>
                             <a href="livres.php">Livres</a>
                             <a href="auteurs.php">Auteurs</a>
-                            <a href="Formulaires.php">Ajout !</a>
-
-                        </nav>
+                            <a href="login.php">Login</a> 
+                            <?php      if(isset($_SESSION['id']) && empty($_SESSION['name']) ){ ?>
+                                   
+                              <?php
+                        
+                                    if($_SESSION['type'] == "admin"){ ?>
+        
+                            <a  href="add_user.php">Admin</a> 
+                             <a href="Formulaires.php">Ajout !</a>  
+                            
+                             
+                                    <?php } ?>
+        
+                                    <?php  }?>
+                        </nav> 
                 </header>
         
             </div>
@@ -23,7 +43,6 @@
                         <h2 class="subtitle">It's me Ryze of League of Legends and I love Books.</h2>
                     </div>
                 </div>
-            </div>
-
+            </div> 
 
 

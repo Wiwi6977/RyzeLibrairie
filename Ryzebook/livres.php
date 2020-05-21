@@ -1,3 +1,12 @@
+
+<?php 
+session_start();
+
+?>
+
+
+
+
 <!DOCTYPE html>
     <!-- Langue -->
 <html lang="en">
@@ -32,33 +41,39 @@
     include("menu.php");
     include("database.php");
   ?>
-  
     <div class="livres">
     <h2 class="title is-1"> Listes des Livres </h2>
     </div>
         <?php
+            $reponse = $bdd->query('SELECT isbn,nom ,titre ,prenom ,editeur.libelle AS libelle_editeur ,genre.libelle AS libelle_genre ,annee FROM livre
+            JOIN personne ON livre.editeur = personne.id
+            JOIN editeur ON livre.editeur = editeur.id
+            JOIN  genre ON livre.genre = genre.id 
+            ORDER BY annee DESC;');
+
         // Affichage de la liste des livres ! 
             while ($ligne = $reponse->fetch()) {
               
-              ?>
               
+            ?>
                <div class="block2">
                  <div class="border-bot">
                <div class="text">
                <?php echo '<br><li>'.'Titre : '.$ligne['titre'] ; ?> <br>
                <?php echo 'Nom :'.$ligne['nom'].'<br>'.'Prénom :'.$ligne['prenom'] ; ?> <br>
-               <a href="#">Voir détails ! </a>
+               <a href="detailslivre.php">Voir détails ! </a>
                     <div class="img">
-                          <img src="img/<?php echo $ligne['isbn']; ?>.jpg" alt="img" style="width : 200px; margin-left : 20px; "> 
+                          <img class="imag" src="img/<?php echo $ligne['isbn']; ?>.jpg" alt="img" style="width : 200px; margin-left : 20px; "> 
                           </div>
                </div>
             </div>
             </div>
             </div>
-           
+          
             <?php 
-                  }
+            }
                   $reponse->closeCursor();
+            
         ?>
 
 </body>
