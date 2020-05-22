@@ -49,7 +49,7 @@ session_start();
             JOIN personne ON livre.editeur = personne.id
             JOIN editeur ON livre.editeur = editeur.id
             JOIN  genre ON livre.genre = genre.id 
-            ORDER BY annee DESC;');
+            ORDER BY annee DESC');
 
         // Affichage de la liste des livres ! 
             while ($ligne = $reponse->fetch()) {
@@ -61,7 +61,7 @@ session_start();
                <div class="text">
                <?php echo '<br><li>'.'Titre : '.$ligne['titre'] ; ?> <br>
                <?php echo 'Nom :'.$ligne['nom'].'<br>'.'Prénom :'.$ligne['prenom'] ; ?> <br>
-               <a href="detailslivre.php">Voir détails ! </a>
+               <a href="detailslivre.php?isbn=<?php echo $ligne['isbn']; ?>">Voir détails ! </a>
                     <div class="img">
                           <img class="imag" src="img/<?php echo $ligne['isbn']; ?>.jpg" alt="img" style="width : 200px; margin-left : 20px; "> 
                           </div>

@@ -9,13 +9,14 @@ if(isset($_SESSION['connect'])){
 require('database.php');
 
 // CONNEXION
-if(!empty($_POST['mail']) && !empty($_POST['mdp']) && !isset($_POST['type'])&& !isset($_POST['id']) ) {
+if(!isset($_POST['id']) &&  !isset($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && !isset($_POST['type']) && !isset($_POST['id']) ) {
 
     // VARIABLES
     $id         = $_POST["id"];
 	$email 		= $_POST['mail'];
     $password 	= $_POST['mdp'];
     $type       = $_POST['type'];
+    $name       =  $_POST['name'];
 
 
 	$error		= 1;
@@ -37,6 +38,7 @@ if(!empty($_POST['mail']) && !empty($_POST['mdp']) && !isset($_POST['type'])&& !
 			$error = 0;
             $_SESSION['connect'] = 1;
             $_SESSION['id'] = $user['id'];
+            $_SESSION['name'] = $user['name'];
             $_SESSION['mail'] = $user['mail'];
             $_SESSION['type'] = $user['type'];
          
@@ -98,7 +100,8 @@ if(!empty($_POST['mail']) && !empty($_POST['mdp']) && !isset($_POST['type'])&& !
 <div class="container">
 		<p id="info">Inscris toi ici si ce n'est pas encore fait --> <a href="login.php">inscrivez-vous.</a></p>
 	 	
-		<?php
+        <?php
+        /* Test si il y a une erreur*/
 			if(isset($_GET['error'])){
 				echo'<p id="error">Nous ne pouvons pas vous authentifier.</p>';
 			}
@@ -108,7 +111,7 @@ if(!empty($_POST['mail']) && !empty($_POST['mdp']) && !isset($_POST['type'])&& !
 		?>
 
 
-
+<!--  Formulaire de connexion-->
 
     <form method="POST" action="connexion.php">
                 <div class="field">

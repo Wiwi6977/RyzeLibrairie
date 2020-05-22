@@ -2,12 +2,12 @@
 session_start();
 
 include('database.php');
-
+ /*      On verifie si les variables existent et ont été définies   */
 
 if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && !empty($_POST['password_confirm'])  ) {
 
-
-$pseudo       = $_POST['name'];
+/*  Variables*/ 
+$name       = $_POST['name'];
 $email        = $_POST['mail'];
 $password     = $_POST['mdp'];
 $pass_confirm = $_POST['password_confirm'];
@@ -31,7 +31,7 @@ if($password != $pass_confirm){
     }
 
 		// HASH
-        $secret = sha1($mail).time();
+        $secret = sha1($email).time();
 		$secret = sha1($secret).time().time();
  
 		// CRYPTAGE DU PASSWORD
@@ -39,12 +39,11 @@ if($password != $pass_confirm){
  
 		// ENVOI DE LA REQUETE
  		$req = $bdd->prepare('INSERT INTO membre( name , mail, mdp ,type ,  secret) VALUES(?,?,?, "user" , ?)');
-		$value = $req->execute(array($pseudo, $email, $password,  $secret));
+		$value = $req->execute(array($name, $email, $password,  $secret));
 			
-		header('location: Acceuil.php?success=1');
+		header('location: login.php?success=1');
         exit();
-        
-      
+     
   }
   
 ?>
@@ -86,6 +85,7 @@ if($password != $pass_confirm){
 
 <div class="container">
 <?php
+/*  On verfie si on est connecté*/
 if(!isset($_SESSION['connect'])){ ?>
 
 
@@ -93,17 +93,17 @@ if(!isset($_SESSION['connect'])){ ?>
       
       <p id="info">Connecte toi ici si tu as déjà un compte--> <a href="connexion.php">ici.</a></p>
       <?php
-		 
+		 /*      On test si on a bien inserer les bonnes valeurs ou chaine de caractère    */
          if(isset($_GET['error'])){
   
              if(isset($_GET['name'])){
-                 echo '<h1 id="error">Les mots de passe ne correspondent pas.</h1>';
+                 echo '<h1 id="error">Le nom  ne correspond pas.</h1>';
              }
             else if(isset($_GET['mdp'])){
-              echo '<h1 id="error">Les mots de passe ne correspondent pas.</h1>';
+              echo '<h1 id="error">Le mots de passe ne correspond pas.</h1>';
           }
               if (isset($_GET['mail'])){
-                 echo '<h1 id="error">Cette adresse email est déjà utilisée.</h1>';
+                 echo '<h1 id="error">Cette adresse email est déjà utilisée ou invalide.</h1>';
              }
          }
          else if(isset($_GET['success'])){
@@ -111,6 +111,7 @@ if(!isset($_SESSION['connect'])){ ?>
          }
       
      ?>
+<!--  Formulaire d'inscription-->
         <form action="login.php" method="POST">
       <div class="field">
   <label class="label">Name</label>
@@ -151,20 +152,23 @@ if(!isset($_SESSION['connect'])){ ?>
     <button class="button is-link">Inscription</button>
   </div>
 </div>
-        
-        <?php } else  { ?>
+        <!--  message de bienvenue + affichage du pseudo -->
+<?php } else  { ?>
 		
 		<h1 id="info">
-            Bonjour <?= $_SESSION["name"]; ?><br>
-            <a href="Acceuil.php"></a>
+            Bonjour <?php echo  $_SESSION['name']; ?><br>
+          
             <a href="deconnexion.php">Déconnexion</a>
             
 		</h1>
 
-
 		<?php } ?>
 
+            
+	
 
+
+        
 </div>
 
 </form>

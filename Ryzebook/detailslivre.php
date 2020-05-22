@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+?>
+
+
+
 <!DOCTYPE html>
     <!-- Langue -->
 <html lang="fr">
@@ -35,34 +42,58 @@
       ?>
 <?php
        //requete 
-     
-       $requete = $bdd->query('SELECT titre,isbn,nom,prenom,nbpages,langue,annee,role.libelle as role,editeur.libelle as editeur,genre.libelle  as genre FROM `auteur`
-   join livre on auteur.idLivre=livre.isbn
-   join role on auteur.idRole=role.id
-   JOIN personne on auteur.idPersonne=personne.id
-   INNER JOIN genre on livre.genre=genre.id
-   INNER JOIN editeur on livre.editeur=editeur.id
-   order by titre');
+       $isbn = $_GET['isbn'];
 
-//var_dump($requete);
-// fetch pour aller chercher la requete
-   while($d = $requete->fetch()){
-?>
-<center>
-    <b><p>Titre :<br>  <?php  echo $d['titre']; ?> <p></b><br> </p>
-     <b><p>Genre :  <?php echo $d['genre'];?><br>
-     Nbpages :   <?php echo $d['nbpages'];?><br>
-     Editeur :      <?php echo $d['editeur'] ;?><br>
-     Langue :      <?php echo $d['langue'] ;?><br>
-     Année :      <?php echo $d['annee'] ;?></p></b>
-     <img src="img/<?php echo $d['isbn']; ?>.jpg" alt="img" style="width : 200px; margin-left : 20px; "> 
-                        <h3 id="info"><a href="index.php">Liste des Livres</h3></a>
-                        
+       $detail = $bdd->prepare('SELECT isbn, titre, nom, prenom, role.libelle AS libelle_role, editeur.libelle AS libelle_editeur, genre.libelle AS libelle_genre,                                             langue.libelle AS libelle_langue , nbpages, annee
+                              FROM livre
+                              JOIN editeur ON livre.editeur = editeur.id
+                              JOIN auteur ON livre.isbn = auteur.idLivre
+                              JOIN personne ON auteur.idPersonne = personne.id
+                              JOIN genre ON livre.genre = genre.id
+                              JOIN langue ON livre.langue = langue.id
+                              JOIN role ON auteur.idRole = role.id
+                              WHERE isbn = :isbn
+                              LIMIT 1');
+       $detail->execute(array(
+              'isbn' => $isbn));
+
+       while($donnee = $detail->fetch())
+            {
+            ?>
+
+            <img src="img/<?php echo $donnee['isbn'];?>.jpg" style="width : 200px; margin-left : 20px;">
+
+            <>
+                Titre : <?php echo $donnee['titre'];?> <br>
+
+                   Auteur : <?php echo $donnee['prenom'] . " " . $donnee['nom'];?> <br>
+
+                   Rôle : <?php echo $donnee['libelle_role'];?> <br>
+
+                   Editeur : <?php echo $donnee['libelle_editeur'];?> <br>
+
+                   Genre : <?php echo $donnee['libelle_genre'];?> <br>
+
+                   Langue : <?php echo $donnee['libelle_langue'];?><br>
+
+                   Nombre de pages : <?php
+
+                   if($donnee['nbpages'] = "NULL"){
+                       echo "Inconnu";
+                   }else{
+                       echo $donnee['nbpages'];
+                   }?> <br>
+
+                   Année de publication : <?php echo $donnee['annee'];?>
+                   <br>
+                    <?php  if($_SESSION['type'] == "admin" && "") {?>
+                  <a href="remerciement.php?isbn=<?php echo $_GET['isbn']?>&idmembre=<?php echo $_SESSION['id']?>">Ajouter au panier</a>
+            </p>
+                    <?php  } ?>
     <?php
    }
-   //fermeture de ma requete
-    $requete->closeCursor(); 
+   //fermeture 
+    $detail->closeCursor(); 
     ?>
-  </center>
     </body>
 </html>

@@ -27,7 +27,7 @@ if(isset($_POST['isbn']) AND isset($_POST['titre']) AND isset($_POST['editeur'])
 
 ?>
 
-
+<!-- Formulaire d'ajout d'un livre -->
 <form action="" method="POST">
 <h2 class="heading-size">Ajout d'un livre</h2>
 <div class="field">
@@ -134,7 +134,7 @@ if(isset($_POST['libelle'])) {
 
 
 ?>
-
+<!-- Formulaire d'ajout d'une langue -->
 <form action="" method="POST">
 <h2 class="heading-size">Ajout d'une langue</h2>
 <div class="field">
@@ -161,7 +161,7 @@ if( isset($_POST['genre'])){
     $requete->execute(array($genre));
 }
     ?>
-   
+   <!-- Formulaire d'ajout d'un genre -->
 <form action="" method="POST">
 <h2 class="heading-size">Ajout d'un genre</h2>
 <div class="field">
@@ -206,3 +206,4 @@ if( isset($_POST['genre'])){
 
                                                     }
                                     </script>
+

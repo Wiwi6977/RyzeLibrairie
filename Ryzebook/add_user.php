@@ -39,11 +39,13 @@ session_start();
       <?php  include("menu.php"); ?>
    
       <?php
+      include('database.php');
+      /*      On verifie si les variables existent et ont été définies   */
 
 if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && !empty($_POST['type']) ) {
 
-
-  $pseudo       = $_POST['name'];
+  /*      Variables   */
+  $pseudo      = $_POST['name'];
   $email        = $_POST['mail'];
   $password     = $_POST['mdp'];
   $type         = $_POST['type'];
@@ -62,7 +64,7 @@ if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && 
       }
   
       // HASH
-          $secret = sha1($mail).time();
+          $secret = sha1($email).time();
       $secret = sha1($secret).time().time();
    
       // CRYPTAGE DU PASSWORD
@@ -70,7 +72,7 @@ if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && 
    
       // ENVOI DE LA REQUETE
        $req = $bdd->prepare('INSERT INTO membre( name , mail, mdp ,type ,  secret) VALUES(?,?,?, ? , ?)');
-      $value = $req->execute(array($pseudo, $email, $password, $secret));
+      $value = $req->execute(array($pseudo, $email, $password, $type , $secret));
         
       header('location: add_user.php?success=1');
           exit();
@@ -80,7 +82,8 @@ if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && 
 
 
 ?>
-<form class="box" action="" method="POST">
+<!--  Formulaire d'ajout en admin-->
+<form class="box" action="add_user.php" method="POST">
   <h1 class="box-logo box-title">
 
   </h1>
@@ -99,11 +102,16 @@ if(!empty($_POST['name']) && !empty($_POST['mdp']) && !empty($_POST['mail']) && 
       </select>
   </div>
   
-    <input type="password" class="box-input" name="password" 
+    <input type="password" class="box-input" name="mdp" 
   placeholder="Mot de passe" required />
   
-    <input type="submit" name="submit" value="+ Add" class="box-button" />
+  <div class="field is-grouped">
+    <div class="control">
+        <button class="button is-link">Add</button>
 </form>
+<p>C'est votre espace admin.</p>
 
+    <a href="#">Update user</a> | 
+    <a href="#">Delete user</a> | 
 </body>
 </html>

@@ -7,7 +7,8 @@ try
 catch (Exception $e)
 {
         die('Erreur : ' . $e->getMessage());
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>

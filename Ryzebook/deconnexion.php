@@ -1,4 +1,5 @@
 <?php
+// On vient killer la session de l'utilisateur tout en ajoutant un cookie
 session_start();
 session_unset();
 session_destroy();
